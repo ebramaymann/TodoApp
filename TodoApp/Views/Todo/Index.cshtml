@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TodoItem>
+
+<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <h1>My To-Do List</h1>
+    <a href="/Todo/Create">Add Task</a>
+    <table>
+        <thead>
+            <tr><th>Title</th><th>Completed</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@(item.IsCompleted ? "Yes" : "No")</td>
+                    <td>
+                        <a href="/Todo/Edit/@item.Id">Edit</a> |
+                        <form action="/Todo/Delete" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+

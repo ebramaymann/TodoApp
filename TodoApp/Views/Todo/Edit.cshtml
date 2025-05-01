@@ -1,0 +1,27 @@
+﻿@model TodoApp.Models.TodoItem
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form action="/Todo/Edit" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <label>Title:</label>
+        <input type="text" name="Title" value="@Model.Title" />
+        <br />
+
+        <label>Completed:</label>
+        <input type="hidden" name="IsCompleted" value="false" />
+        <input type="checkbox" name="IsCompleted" value="true" @(Model.IsCompleted ? "checked" : "") />
+        <br />
+
+        <button type="submit">Update</button>
+    </form>
+    <br />
+    <a href="/Todo/Index">Back to list</a>
+</body>
+</html>
