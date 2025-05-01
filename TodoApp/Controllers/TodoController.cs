@@ -47,8 +47,6 @@ namespace TodoApp.Controllers
         [HttpPost]
         public IActionResult Edit(TodoItem todoItem)
         {
-            Console.WriteLine($"DEBUG: IsCompleted = {todoItem.IsCompleted}");
-
             if (ModelState.IsValid)
             {
                 _context.TodoItems.Update(todoItem);
@@ -57,6 +55,7 @@ namespace TodoApp.Controllers
             }
             return View(todoItem);
         }
+
 
 
 
